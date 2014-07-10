@@ -1,0 +1,3 @@
+name: Marenwynn-t3
+main: com.tenjava.entries.Marenwynn.t3.TenJava
+version: '${project.version}'
