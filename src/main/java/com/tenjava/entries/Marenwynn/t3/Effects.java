@@ -46,6 +46,8 @@ public class Effects {
             // The graver the injury, the louder one would yell
             Util.playerYell(p, Msg.YELL_BROKEN_LEG, severity);
             Msg.NOTICE_BROKEN_LEGS.sendTo(p);
+        } else {
+            bleedPlayer(p, 10);
         }
     }
 

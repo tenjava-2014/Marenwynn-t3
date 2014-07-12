@@ -56,5 +56,5 @@ Usage
 4. Being struck in combat has a random chance of making you
    bleed; the greater the damage, the greater the chance.
    Blocking will prevent this from happening. :)
-   
+
 5. Breaking your legs and bleeding out sucks, so stay well-stocked!
