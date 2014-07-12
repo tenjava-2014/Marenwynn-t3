@@ -15,7 +15,7 @@ public class Effects {
         Effects.tj = tj;
     }
 
-    public static void bleedPlayer(Player p, int severity, boolean initial) {
+    public static void bleedPlayer(Player p, int severity) {
         PlayerData pd = Data.getPlayerData(p.getUniqueId());
 
         pd.setBleedSeverity(severity);
@@ -23,12 +23,14 @@ public class Effects {
 
         Data.bleedTasks.put(p.getUniqueId(), new BleedPlayer(p, pd).runTaskTimer(tj, 0, 20L * 10));
 
-        if (initial) {
+        if (!Data.bleedTasks.containsKey(p.getUniqueId())) {
             pd.setWalkSpeed(pd.getWalkSpeed() - 0.1F);
             Util.playerYell(p, Msg.YELL_BLEEDING, pd.getBleedSeverity());
         }
 
         Data.savePlayer(p.getUniqueId());
+
+        p.setWalkSpeed(pd.getWalkSpeed());
         Msg.NOTICE_BLEEDING.sendTo(p);
     }
 

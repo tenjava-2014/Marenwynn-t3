@@ -22,7 +22,7 @@ public class CombatListener implements Listener {
         PlayerData pd = Data.getPlayerData(p.getUniqueId());
         double damage = damageEvent.getDamage();
 
-        // Blocking will prevent bleeds :)
+        // Blocking is a great way to prevent serious bodily injury!
         if (p.isBlocking() || p.getHealth() - damage <= 0)
             return;
 
@@ -32,7 +32,7 @@ public class CombatListener implements Listener {
         // Bleeds don't stack, but they can get worse
         if (!pd.isBleeding() || (pd.isBleeding() && pd.getBleedSeverity() < severity))
             if (Util.getRandom().nextInt(100) <= effectChance)
-                Effects.bleedPlayer(p, severity, true);
+                Effects.bleedPlayer(p, severity);
 
         // Debug
         Bukkit.broadcastMessage("damage: " + damage);

@@ -28,7 +28,7 @@ public class PlayerListener implements Listener {
             Msg.NOTICE_BROKEN_LEGS.sendTo(p);
 
         if (pd.isBleeding())
-            Effects.bleedPlayer(p, pd.getBleedSeverity(), false);
+            Effects.bleedPlayer(p, pd.getBleedSeverity());
     }
 
     @EventHandler

@@ -92,6 +92,7 @@ public class ItemUseListener implements Listener {
             Data.savePlayer(targetUUID);
 
             useItemInHand(p);
+            t.setWalkSpeed(td.getWalkSpeed());
 
             if (p == t) {
                 Msg.BANDAGE_SELF.sendTo(p);
