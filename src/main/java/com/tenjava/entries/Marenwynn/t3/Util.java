@@ -1,10 +1,14 @@
 package com.tenjava.entries.Marenwynn.t3;
 
+import java.util.List;
 import java.util.Random;
 
+import org.apache.commons.lang.WordUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import com.tenjava.entries.Marenwynn.t3.data.Msg;
 
@@ -30,6 +34,17 @@ public class Util {
                 Msg.YELL.sendTo((Player) e, Msg.YELL_BROKEN_LEG, p.getName());
 
         Msg.YELL.sendTo(p, Msg.YELL_BROKEN_LEG, p.getName());
+    }
+
+    public static ItemStack setItemNameAndLore(ItemStack item, String name, List<String> lore) {
+        ItemMeta im = item.getItemMeta();
+        im.setDisplayName(name);
+
+        if (lore != null)
+            im.setLore(lore);
+
+        item.setItemMeta(im);
+        return item;
     }
 
 }
