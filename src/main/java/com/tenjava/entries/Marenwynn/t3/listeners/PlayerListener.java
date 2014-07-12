@@ -8,7 +8,6 @@ import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import com.tenjava.entries.Marenwynn.t3.Effects;
 import com.tenjava.entries.Marenwynn.t3.data.Data;
 import com.tenjava.entries.Marenwynn.t3.data.Msg;
 import com.tenjava.entries.Marenwynn.t3.data.PlayerData;
@@ -20,10 +19,10 @@ public class PlayerListener implements Listener {
         Player p = joinEvent.getPlayer();
         PlayerData pd = Data.loadPlayer(p.getUniqueId());
 
+        p.setWalkSpeed(pd.getWalkSpeed());
+
         if (pd.hasBrokenLegs())
-            Effects.breakLegs(p, 0, true);
-        else
-            p.setWalkSpeed(0.2F);
+            Msg.NOTICE_BROKEN_LEGS.sendTo(p);
     }
 
     @EventHandler
@@ -49,10 +48,10 @@ public class PlayerListener implements Listener {
         Player p = worldEvent.getPlayer();
         PlayerData pd = Data.loadPlayer(p.getUniqueId());
 
+        p.setWalkSpeed(pd.getWalkSpeed());
+
         if (pd.hasBrokenLegs())
-            Effects.breakLegs(p, 0, true);
-        else
-            p.setWalkSpeed(0.2F);
+            Msg.NOTICE_BROKEN_LEGS.sendTo(p);
     }
 
 }

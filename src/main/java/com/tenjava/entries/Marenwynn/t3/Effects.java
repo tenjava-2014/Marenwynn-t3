@@ -14,17 +14,16 @@ public class Effects {
         Effects.tj = tj;
     }
 
-    public static void breakLegs(Player p, int severity, boolean renew) {
+    public static void breakLegs(Player p, int severity) {
         PlayerData pd = Data.getPlayerData(p.getUniqueId());
 
         if (!pd.hasBrokenLegs()) {
             pd.setBrokenLegs(true);
-            p.setWalkSpeed(0.1F);
+            pd.setWalkSpeed(pd.getWalkSpeed() / 2F);
+            p.setWalkSpeed(pd.getWalkSpeed());
 
             // The graver the injury, the louder one would yell
-            if (!renew)
-                Util.playerYell(p, Msg.YELL_BROKEN_LEG, severity);
-
+            Util.playerYell(p, Msg.YELL_BROKEN_LEG, severity);
             Msg.NOTICE_BROKEN_LEGS.sendTo(p);
         }
     }
