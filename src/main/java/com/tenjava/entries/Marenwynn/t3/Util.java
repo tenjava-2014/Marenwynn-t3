@@ -37,7 +37,7 @@ public class Util {
 
     public static ItemStack setItemNameAndLore(ItemStack item, String name, List<String> lore) {
         ItemMeta im = item.getItemMeta();
-        im.setDisplayName(name);
+        im.setDisplayName(color(name));
 
         if (lore != null)
             im.setLore(lore);

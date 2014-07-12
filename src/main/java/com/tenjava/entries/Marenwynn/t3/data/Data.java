@@ -23,11 +23,11 @@ import com.tenjava.entries.Marenwynn.t3.Util;
 
 public class Data {
 
-    private static TenJava                tj;
-    private static Map<Msg, String>       messages;
+    private static TenJava               tj;
+    private static Map<Msg, String>      messages;
 
-    private static File                   playerDataFolder;
-    private static Map<UUID, PlayerData>  players;
+    private static File                  playerDataFolder;
+    private static Map<UUID, PlayerData> players;
 
     public static Map<String, ItemStack> customItems;
 
@@ -46,9 +46,9 @@ public class Data {
 
         // Create gauze
         List<String> lore = new ArrayList<String>();
-        lore.add("&fCan be used to patch up");
-        lore.add("&fflesh wounds.");
-        lore.add("&8&oRight-click to use");
+        lore.add(Util.color("&fCan be used to patch up"));
+        lore.add(Util.color("&fflesh wounds."));
+        lore.add(Util.color("&8&oRight-click to use"));
 
         ItemStack gauze = Util.setItemNameAndLore(new ItemStack(Material.PAPER, 1), "&aGauze", lore);
         customItems.put("gauze", gauze);
@@ -61,9 +61,9 @@ public class Data {
 
         // Create splint
         lore.clear();
-        lore.add("&fBraces broken legs to");
-        lore.add("restore mobility");
-        lore.add("&8&oRight-click to use");
+        lore.add(Util.color("&fBraces broken legs to"));
+        lore.add(Util.color("&frestore mobility"));
+        lore.add(Util.color("&8&oRight-click to use"));
 
         ItemStack splint = Util.setItemNameAndLore(new ItemStack(Material.STICK, 1), "&aSplint", lore);
         customItems.put("splint", splint);

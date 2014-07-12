@@ -18,7 +18,7 @@ public class ItemUseListener implements Listener {
         Player p = useEvent.getPlayer();
         Action a = useEvent.getAction();
 
-        if (a != Action.RIGHT_CLICK_AIR || a != Action.RIGHT_CLICK_BLOCK)
+        if (a != Action.RIGHT_CLICK_AIR && a != Action.RIGHT_CLICK_BLOCK)
             return;
 
         ItemStack is = useEvent.getItem();

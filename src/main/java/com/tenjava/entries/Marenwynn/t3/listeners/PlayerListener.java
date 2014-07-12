@@ -38,6 +38,7 @@ public class PlayerListener implements Listener {
 
         if (pd.hasBrokenLegs()) {
             p.setWalkSpeed(0.2F);
+            pd.setWalkSpeed(0.2F);
             pd.setBrokenLegs(false);
             Data.savePlayer(p.getUniqueId());
         }
