@@ -6,12 +6,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.scheduler.BukkitTask;
 
 import com.tenjava.entries.Marenwynn.t3.Effects;
 import com.tenjava.entries.Marenwynn.t3.Util;
 import com.tenjava.entries.Marenwynn.t3.data.Data;
-import com.tenjava.entries.Marenwynn.t3.tasks.BleedPlayer;
+import com.tenjava.entries.Marenwynn.t3.data.PlayerData;
 
 public class CombatListener implements Listener {
 
@@ -21,6 +20,7 @@ public class CombatListener implements Listener {
             return;
 
         Player p = (Player) damageEvent.getEntity();
+        PlayerData pd = Data.getPlayerData(p.getUniqueId());
         double damage = damageEvent.getDamage();
 
         // Blocking will prevent bleeds :)
@@ -31,20 +31,13 @@ public class CombatListener implements Listener {
         int effectChance = 10 + severity;
 
         // Bleeds don't stack, but they can get worse
-        if (Data.bleedTasks.containsKey(p.getUniqueId())) {
-            BleedPlayer bleed = Data.bleedTasks.get(p.getUniqueId());
-
-            if (bleed.getSeverity() >= severity)
-                return;
-        }
-
-        if (Util.getRandom().nextInt(100) <= effectChance)
-            Effects.bleedPlayer(p, severity);
+        if (!pd.isBleeding() || (pd.isBleeding() && pd.getBleedSeverity() < severity))
+            if (Util.getRandom().nextInt(100) <= effectChance)
+                Effects.bleedPlayer(p, severity);
 
         // Debug
         Bukkit.broadcastMessage("damage: " + damage);
         Bukkit.broadcastMessage("severity: " + severity);
         Bukkit.broadcastMessage("effect chance: " + effectChance);
     }
-
 }

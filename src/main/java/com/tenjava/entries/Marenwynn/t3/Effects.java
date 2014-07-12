@@ -16,9 +16,17 @@ public class Effects {
     }
 
     public static void bleedPlayer(Player p, int severity) {
+        PlayerData pd = Data.getPlayerData(p.getUniqueId());
+
+        pd.setBleedSeverity(severity);
+        pd.setBleeding(true);
+        Data.savePlayer(p.getUniqueId());
+
         // Severity makes bleeding more frequent
         Data.bleedTasks.put(p.getUniqueId(),
-                (BleedPlayer) new BleedPlayer(p, severity).runTaskTimer(tj, 0, 20L * (100 - severity)));
+                new BleedPlayer(p, pd).runTaskTimer(tj, 0, 20L * (100 - pd.getBleedSeverity())));
+
+        Util.playerYell(p, Msg.YELL_BLEEDING, pd.getBleedSeverity());
     }
 
     public static void breakLegs(Player p, int severity) {

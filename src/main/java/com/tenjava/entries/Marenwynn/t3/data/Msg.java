@@ -12,6 +12,7 @@ public enum Msg {
     NOTICE_BROKEN_LEGS("&cOne of your legs are in bad shape."),
     PREFIX_ERROR("&cError: &f"),
     YELL("&c&o\"%s\" yells %s."),
+    YELL_BLEEDING("Touché!"),
     YELL_BROKEN_LEG("Fuck! My leg!!");
 
     private final String defaultMsg;
