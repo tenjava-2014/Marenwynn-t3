@@ -2,8 +2,13 @@ package com.tenjava.entries.Marenwynn.t3;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.tenjava.entries.Marenwynn.t3.data.Data;
+
 public class TenJava extends JavaPlugin {
-    
-    // Test Commit
-    
+
+    @Override
+    public void onEnable() {
+        Data.init(this);
+    }
+
 }

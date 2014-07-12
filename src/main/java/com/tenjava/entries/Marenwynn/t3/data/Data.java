@@ -10,12 +10,10 @@ public class Data {
     private static TenJava          tj;
     private static Map<Msg, String> messages;
 
-    public Data(TenJava tj) {
+    public static void init(TenJava tj) {
         Data.tj = tj;
-    }
-
-    public static void init() {
         messages = new HashMap<Msg, String>();
+        loadConfig();
     }
 
     public static void kill() {
