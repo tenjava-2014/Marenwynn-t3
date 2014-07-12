@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -25,6 +26,13 @@ public class Util {
 
     public static String color(String string) {
         return ChatColor.translateAlternateColorCodes('&', string);
+    }
+
+    @SuppressWarnings("deprecation")
+    public static void bleed(Player p) {
+        for (Entity e : p.getNearbyEntities(15D, 15D, 15D))
+            if (e instanceof Player)
+                ((Player) e).sendBlockChange(p.getLocation(), Material.REDSTONE_WIRE, (byte) 0);
     }
 
     public static void playerYell(Player p, Msg msg, double severity) {

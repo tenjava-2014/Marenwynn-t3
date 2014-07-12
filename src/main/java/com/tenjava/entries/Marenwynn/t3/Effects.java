@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import com.tenjava.entries.Marenwynn.t3.data.Data;
 import com.tenjava.entries.Marenwynn.t3.data.Msg;
 import com.tenjava.entries.Marenwynn.t3.data.PlayerData;
+import com.tenjava.entries.Marenwynn.t3.tasks.BleedPlayer;
 
 public class Effects {
 
@@ -12,6 +13,12 @@ public class Effects {
 
     public static void init(TenJava tj) {
         Effects.tj = tj;
+    }
+
+    public static void bleedPlayer(Player p, int severity) {
+        // Severity makes bleeding more frequent
+        Data.bleedTasks.put(p.getUniqueId(),
+                (BleedPlayer) new BleedPlayer(p, severity).runTaskTimer(tj, 0, 20L * (100 - severity)));
     }
 
     public static void breakLegs(Player p, int severity) {

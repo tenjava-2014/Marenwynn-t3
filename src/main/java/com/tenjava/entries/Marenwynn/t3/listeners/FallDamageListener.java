@@ -1,6 +1,5 @@
 package com.tenjava.entries.Marenwynn.t3.listeners;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -31,11 +30,6 @@ public class FallDamageListener implements Listener {
 
         if (Util.getRandom().nextInt(100) <= effectChance)
             Effects.breakLegs(p, severity);
-
-        // Debug
-        Bukkit.broadcastMessage("damage: " + fallDamage);
-        Bukkit.broadcastMessage("severity: " + severity);
-        Bukkit.broadcastMessage("effect chance: " + effectChance);
     }
 
 }

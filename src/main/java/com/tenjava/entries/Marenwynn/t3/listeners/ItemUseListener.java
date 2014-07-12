@@ -28,9 +28,10 @@ public class ItemUseListener implements Listener {
         if (!p.isSneaking() || is == null)
             return;
 
-        if (is.isSimilar(Data.customItems.get("splint")))
-            if (mendLegs(p, t))
-                useEvent.setCancelled(true);
+        if (is.isSimilar(Data.customItems.get("splint"))) {
+            mendLegs(p, t);
+            useEvent.setCancelled(true);
+        }
     }
 
     @EventHandler
@@ -46,12 +47,13 @@ public class ItemUseListener implements Listener {
         if (is == null)
             return;
 
-        if (is.isSimilar(Data.customItems.get("splint")))
-            if (mendLegs(p, p))
-                useEvent.setCancelled(true);
+        if (is.isSimilar(Data.customItems.get("splint"))) {
+            mendLegs(p, p);
+            useEvent.setCancelled(true);
+        }
     }
 
-    public boolean mendLegs(Player p, Player t) {
+    public void mendLegs(Player p, Player t) {
         PlayerData td = Data.getPlayerData(t.getUniqueId());
 
         if (td.hasBrokenLegs()) {
@@ -68,10 +70,6 @@ public class ItemUseListener implements Listener {
                 Msg.MEND_LEGS_OTHER.sendTo(p, t.getName());
                 Msg.MEND_LEGS_OTHER_NOTICE.sendTo(t, p.getName());
             }
-
-            return true;
-        } else {
-            return false;
         }
     }
 

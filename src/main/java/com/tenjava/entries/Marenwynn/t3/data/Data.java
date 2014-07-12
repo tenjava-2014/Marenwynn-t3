@@ -20,6 +20,7 @@ import org.bukkit.inventory.ShapedRecipe;
 
 import com.tenjava.entries.Marenwynn.t3.TenJava;
 import com.tenjava.entries.Marenwynn.t3.Util;
+import com.tenjava.entries.Marenwynn.t3.tasks.BleedPlayer;
 
 public class Data {
 
@@ -30,6 +31,7 @@ public class Data {
     private static Map<UUID, PlayerData> players;
 
     public static Map<String, ItemStack> customItems;
+    public static Map<UUID, BleedPlayer> bleedTasks;
 
     public static void init(TenJava tj) {
         Data.tj = tj;
@@ -43,6 +45,7 @@ public class Data {
             playerDataFolder.mkdirs();
 
         customItems = new HashMap<String, ItemStack>();
+        bleedTasks = new HashMap<UUID, BleedPlayer>();
 
         // Create gauze
         List<String> lore = new ArrayList<String>();
