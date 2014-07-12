@@ -6,6 +6,9 @@ import com.tenjava.entries.Marenwynn.t3.Util;
 
 public enum Msg {
 
+    BANDAGE_OTHER("&aYou patch up &6%s&a... hopefully soon enough."),
+    BANDAGE_OTHER_NOTICE("&6%s &abandages your wounds. How considerate!"),
+    BANDAGE_SELF("&aYou bandage up your wounds. There was so much blood..."),
     MEND_LEGS("&aYou splint your broken leg. That's a load off..."),
     MEND_LEGS_OTHER("&aYou splint &6%s&a's leg."),
     MEND_LEGS_OTHER_NOTICE("&6%s &asplints your broken leg. Much better!"),

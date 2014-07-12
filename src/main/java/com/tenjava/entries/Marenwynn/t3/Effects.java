@@ -20,13 +20,15 @@ public class Effects {
 
         pd.setBleedSeverity(severity);
         pd.setBleeding(true);
-        Data.savePlayer(p.getUniqueId());
 
         Data.bleedTasks.put(p.getUniqueId(), new BleedPlayer(p, pd).runTaskTimer(tj, 0, 20L * 10));
 
-        if (initial)
+        if (initial) {
+            pd.setWalkSpeed(pd.getWalkSpeed() - 0.1F);
             Util.playerYell(p, Msg.YELL_BLEEDING, pd.getBleedSeverity());
+        }
 
+        Data.savePlayer(p.getUniqueId());
         Msg.NOTICE_BLEEDING.sendTo(p);
     }
 

@@ -1,5 +1,7 @@
 package com.tenjava.entries.Marenwynn.t3.listeners;
 
+import java.util.UUID;
+
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -31,6 +33,9 @@ public class ItemUseListener implements Listener {
         if (is.isSimilar(Data.customItems.get("splint"))) {
             mendLegs(p, t);
             useEvent.setCancelled(true);
+        } else if (is.isSimilar(Data.customItems.get("gauze"))) {
+            bandage(p, t);
+            useEvent.setCancelled(true);
         }
     }
 
@@ -49,6 +54,9 @@ public class ItemUseListener implements Listener {
 
         if (is.isSimilar(Data.customItems.get("splint"))) {
             mendLegs(p, p);
+            useEvent.setCancelled(true);
+        } else if (is.isSimilar(Data.customItems.get("gauze"))) {
+            bandage(p, p);
             useEvent.setCancelled(true);
         }
     }
@@ -69,6 +77,27 @@ public class ItemUseListener implements Listener {
             } else {
                 Msg.MEND_LEGS_OTHER.sendTo(p, t.getName());
                 Msg.MEND_LEGS_OTHER_NOTICE.sendTo(t, p.getName());
+            }
+        }
+    }
+
+    public void bandage(Player p, Player t) {
+        PlayerData td = Data.getPlayerData(t.getUniqueId());
+        UUID targetUUID = t.getUniqueId();
+
+        if (td.isBleeding()) {
+            Data.bleedTasks.get(targetUUID).cancel();
+            td.setWalkSpeed(td.getWalkSpeed() + 0.1F);
+            td.setBleeding(false);
+            Data.savePlayer(targetUUID);
+
+            useItemInHand(p);
+
+            if (p == t) {
+                Msg.BANDAGE_SELF.sendTo(p);
+            } else {
+                Msg.BANDAGE_OTHER.sendTo(p, t.getName());
+                Msg.BANDAGE_OTHER_NOTICE.sendTo(t, p.getName());
             }
         }
     }
