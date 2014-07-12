@@ -54,6 +54,9 @@ public class PlayerListener implements Listener {
             pd.setBrokenLegs(false);
         }
 
+        if (pd.hasBrokenArm())
+            Msg.NOTICE_BROKEN_ARM.sendTo(p);
+
         Data.savePlayer(playerUUID);
     }
 
