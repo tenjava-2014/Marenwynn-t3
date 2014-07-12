@@ -6,7 +6,9 @@ import com.tenjava.entries.Marenwynn.t3.Util;
 
 public enum Msg {
 
-    PREFIX_ERROR("&cError: &f");
+    PREFIX_ERROR("&cError: &f"),
+    YELL("&c&o\"%s\" yells %s."),
+    YELL_BROKEN_LEG("Fuck! My leg!!");
 
     private final String defaultMsg;
 
