@@ -29,7 +29,7 @@ public class Data {
     private static File                   playerDataFolder;
     private static Map<UUID, PlayerData>  players;
 
-    private static Map<String, ItemStack> customItems;
+    public static Map<String, ItemStack> customItems;
 
     public static void init(TenJava tj) {
         Data.tj = tj;
