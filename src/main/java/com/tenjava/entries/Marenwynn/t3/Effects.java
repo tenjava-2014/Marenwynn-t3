@@ -1,9 +1,10 @@
 package com.tenjava.entries.Marenwynn.t3;
 
 import org.bukkit.entity.Player;
-import org.bukkit.metadata.FixedMetadataValue;
 
+import com.tenjava.entries.Marenwynn.t3.data.Data;
 import com.tenjava.entries.Marenwynn.t3.data.Msg;
+import com.tenjava.entries.Marenwynn.t3.data.PlayerData;
 
 public class Effects {
 
@@ -14,9 +15,12 @@ public class Effects {
     }
 
     public static void breakLegs(Player p, int severity) {
-        if (!p.hasMetadata("broken.legs")) {
+        PlayerData pd = Data.getPlayerData(p.getUniqueId());
+
+        if (!pd.hasBrokenLegs()) {
+            pd.setBrokenLegs(true);
+            pd.setOriginalWalkSpeed(p.getWalkSpeed());
             p.setWalkSpeed(p.getWalkSpeed() / 2F);
-            p.setMetadata("broken.legs", new FixedMetadataValue(tj, true));
 
             // The graver the injury, the louder one would yell
             Util.playerYell(p, Msg.YELL_BROKEN_LEG, severity);
