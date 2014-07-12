@@ -18,8 +18,8 @@ public class Effects {
         PlayerData pd = Data.getPlayerData(p.getUniqueId());
 
         if (!pd.hasBrokenLegs()) {
-            pd.setBrokenLegs(true);
             pd.setWalkSpeed(pd.getWalkSpeed() - 0.1F);
+            pd.setBrokenLegs(true);
             Data.savePlayer(p.getUniqueId());
 
             p.setWalkSpeed(pd.getWalkSpeed());

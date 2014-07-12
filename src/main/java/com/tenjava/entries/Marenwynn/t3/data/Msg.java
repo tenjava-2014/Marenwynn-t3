@@ -6,11 +6,13 @@ import com.tenjava.entries.Marenwynn.t3.Util;
 
 public enum Msg {
 
-    MEND_LEGS("&aYou splint your legs. That's a load off..."),
-    NOTICE_BROKEN_LEGS("&cYour legs are in bad shape."),
+    MEND_LEGS("&aYou splint your broken leg. That's a load off..."),
+    MEND_LEGS_OTHER("&aYou splint &6%s&a's leg."),
+    MEND_LEGS_OTHER_NOTICE("&6%s &asplints your broken leg. Much better!"),
+    NOTICE_BROKEN_LEGS("&cOne of your legs are in bad shape."),
     PREFIX_ERROR("&cError: &f"),
     YELL("&c&o\"%s\" yells %s."),
-    YELL_BROKEN_LEG("Fuck! My legs!!");
+    YELL_BROKEN_LEG("Fuck! My leg!!");
 
     private final String defaultMsg;
 
