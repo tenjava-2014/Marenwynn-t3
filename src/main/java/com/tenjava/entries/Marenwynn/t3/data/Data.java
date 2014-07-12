@@ -26,6 +26,7 @@ public class Data {
         loadConfig();
 
         playerDataFolder = new File(tj.getDataFolder().getPath() + File.separator + "players");
+        players = new HashMap<UUID, PlayerData>();
 
         if (!playerDataFolder.exists())
             playerDataFolder.mkdirs();

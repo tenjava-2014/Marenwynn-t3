@@ -30,7 +30,7 @@ public class FallDamageListener implements Listener {
         int effectChance = 5 + severity;
 
         if (Util.getRandom().nextInt(100) <= effectChance)
-            Effects.breakLegs(p, severity);
+            Effects.breakLegs(p, severity, false);
 
         // Debug
         Bukkit.broadcastMessage("damage: " + fallDamage);

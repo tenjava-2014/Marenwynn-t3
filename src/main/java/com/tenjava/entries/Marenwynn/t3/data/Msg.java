@@ -6,6 +6,7 @@ import com.tenjava.entries.Marenwynn.t3.Util;
 
 public enum Msg {
 
+    NOTICE_BROKEN_LEGS("&cYour legs are in bad shape."),
     PREFIX_ERROR("&cError: &f"),
     YELL("&c&o\"%s\" yells %s."),
     YELL_BROKEN_LEG("Fuck! My legs!!");
