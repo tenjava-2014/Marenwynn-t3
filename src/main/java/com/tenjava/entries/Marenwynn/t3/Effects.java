@@ -20,8 +20,9 @@ public class Effects {
         if (!pd.hasBrokenLegs()) {
             pd.setBrokenLegs(true);
             pd.setWalkSpeed(pd.getWalkSpeed() - 0.1F);
-            p.setWalkSpeed(pd.getWalkSpeed());
+            Data.savePlayer(p.getUniqueId());
 
+            p.setWalkSpeed(pd.getWalkSpeed());
             // The graver the injury, the louder one would yell
             Util.playerYell(p, Msg.YELL_BROKEN_LEG, severity);
             Msg.NOTICE_BROKEN_LEGS.sendTo(p);
