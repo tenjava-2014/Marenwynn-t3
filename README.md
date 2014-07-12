@@ -51,7 +51,8 @@ Usage
         'S' = String; 'T' = Stick; '_' = Nothing
 
 3. Falling will have a random chance of breaking your legs;
-   the greater the fall, the greater the chance
+   the greater the fall, the greater the chance. If you eat shit
+   when your legs are already broken, you will bleed.
 
 4. Being struck in combat has a random chance of making you
    bleed; the greater the damage, the greater the chance.

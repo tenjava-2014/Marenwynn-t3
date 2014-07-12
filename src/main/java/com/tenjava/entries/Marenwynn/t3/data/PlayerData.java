@@ -8,7 +8,7 @@ public class PlayerData implements Serializable {
 
     private static final long serialVersionUID = 9104156590029344629L;
 
-    private boolean           bleeding, brokenLegs;
+    private boolean           bleeding, brokenArm, brokenLegs;
     private float             walkSpeed;
     private int               bleedSeverity;
     private GridLocation      lastSwingLoc;
@@ -25,6 +25,14 @@ public class PlayerData implements Serializable {
 
     public void setBrokenLegs(boolean brokenLegs) {
         this.brokenLegs = brokenLegs;
+    }
+
+    public boolean hasBrokenArm() {
+        return brokenArm;
+    }
+
+    public void setBrokenArm(boolean brokenArm) {
+        this.brokenArm = brokenArm;
     }
 
     public float getWalkSpeed() {

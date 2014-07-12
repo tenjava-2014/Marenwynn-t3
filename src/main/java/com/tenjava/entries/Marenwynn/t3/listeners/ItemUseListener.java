@@ -31,7 +31,7 @@ public class ItemUseListener implements Listener {
             return;
 
         if (is.isSimilar(Data.customItems.get("splint"))) {
-            mendLegs(p, t);
+            mendBones(p, t);
             useEvent.setCancelled(true);
         } else if (is.isSimilar(Data.customItems.get("gauze"))) {
             bandage(p, t);
@@ -53,7 +53,7 @@ public class ItemUseListener implements Listener {
             return;
 
         if (is.isSimilar(Data.customItems.get("splint"))) {
-            mendLegs(p, p);
+            mendBones(p, p);
             useEvent.setCancelled(true);
         } else if (is.isSimilar(Data.customItems.get("gauze"))) {
             bandage(p, p);
@@ -61,13 +61,12 @@ public class ItemUseListener implements Listener {
         }
     }
 
-    public void mendLegs(Player p, Player t) {
+    public void mendBones(Player p, Player t) {
         PlayerData td = Data.getPlayerData(t.getUniqueId());
 
         if (td.hasBrokenLegs()) {
             td.setWalkSpeed(td.getWalkSpeed() + 0.1F);
             td.setBrokenLegs(false);
-            Data.savePlayer(t.getUniqueId());
 
             useItemInHand(p);
             t.setWalkSpeed(td.getWalkSpeed());
@@ -78,7 +77,19 @@ public class ItemUseListener implements Listener {
                 Msg.MEND_LEGS_OTHER.sendTo(p, t.getName());
                 Msg.MEND_LEGS_OTHER_NOTICE.sendTo(t, p.getName());
             }
+        } else if (td.hasBrokenArm()) {
+            td.setBrokenArm(false);
+            useItemInHand(p);
+
+            if (p == t) {
+                Msg.MEND_ARM.sendTo(p);
+            } else {
+                Msg.MEND_ARM_OTHER.sendTo(p, t.getName());
+                Msg.MEND_ARM_OTHER_NOTICE.sendTo(t, p.getName());
+            }
         }
+
+        Data.savePlayer(t.getUniqueId());
     }
 
     public void bandage(Player p, Player t) {

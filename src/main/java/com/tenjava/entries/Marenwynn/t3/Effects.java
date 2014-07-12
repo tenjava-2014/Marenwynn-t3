@@ -34,6 +34,14 @@ public class Effects {
         Msg.NOTICE_BLEEDING.sendTo(p);
     }
 
+    public static void breakArm(Player p) {
+        PlayerData pd = Data.getPlayerData(p.getUniqueId());
+        pd.setBrokenArm(true);
+        Data.savePlayer(p.getUniqueId());
+
+        Msg.NOTICE_BROKEN_ARM.sendTo(p);
+    }
+
     public static void breakLegs(Player p, int severity) {
         PlayerData pd = Data.getPlayerData(p.getUniqueId());
 

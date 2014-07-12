@@ -17,6 +17,13 @@ public class CombatListener implements Listener {
         if (!(damageEvent.getEntity() instanceof Player))
             return;
 
+        if (damageEvent.getDamager() instanceof Player) {
+            PlayerData ad = Data.getPlayerData(damageEvent.getDamager().getUniqueId());
+
+            if (ad.hasBrokenArm())
+                damageEvent.setDamage(damageEvent.getDamage() / 2D);
+        }
+
         Player p = (Player) damageEvent.getEntity();
         PlayerData pd = Data.getPlayerData(p.getUniqueId());
         double damage = damageEvent.getDamage();
@@ -32,6 +39,9 @@ public class CombatListener implements Listener {
         if (!pd.isBleeding() || (pd.isBleeding() && pd.getBleedSeverity() < severity))
             if (Util.getRandom().nextInt(100) <= effectChance)
                 Effects.bleedPlayer(p, severity);
-    }
 
+        // Really small chance to break your arm
+        if (Util.getRandom().nextInt(100) <= (int) damage)
+            Effects.breakArm(p);
+    }
 }
