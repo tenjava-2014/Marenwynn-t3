@@ -1,5 +1,7 @@
 package com.tenjava.entries.Marenwynn.t3.listeners;
 
+import java.util.UUID;
+
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -8,6 +10,7 @@ import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import com.tenjava.entries.Marenwynn.t3.Effects;
 import com.tenjava.entries.Marenwynn.t3.data.Data;
 import com.tenjava.entries.Marenwynn.t3.data.Msg;
 import com.tenjava.entries.Marenwynn.t3.data.PlayerData;
@@ -23,6 +26,9 @@ public class PlayerListener implements Listener {
 
         if (pd.hasBrokenLegs())
             Msg.NOTICE_BROKEN_LEGS.sendTo(p);
+
+        if (pd.isBleeding())
+            Effects.bleedPlayer(p, pd.getBleedSeverity(), false);
     }
 
     @EventHandler
@@ -34,14 +40,21 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent deathEvent) {
         Player p = deathEvent.getEntity();
-        PlayerData pd = Data.getPlayerData(p.getUniqueId());
+        UUID playerUUID = p.getUniqueId();
+        PlayerData pd = Data.getPlayerData(playerUUID);
+
+        if (pd.isBleeding()) {
+            Data.bleedTasks.get(playerUUID).cancel();
+            pd.setBleeding(false);
+        }
 
         if (pd.hasBrokenLegs()) {
             p.setWalkSpeed(0.2F);
             pd.setWalkSpeed(0.2F);
             pd.setBrokenLegs(false);
-            Data.savePlayer(p.getUniqueId());
         }
+
+        Data.savePlayer(playerUUID);
     }
 
     @EventHandler

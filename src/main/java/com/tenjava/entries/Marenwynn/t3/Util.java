@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.Random;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -28,19 +31,40 @@ public class Util {
         return ChatColor.translateAlternateColorCodes('&', string);
     }
 
-    @SuppressWarnings("deprecation")
     public static void bleed(Player p) {
-        for (Entity e : p.getNearbyEntities(15D, 15D, 15D))
-            if (e instanceof Player)
-                ((Player) e).sendBlockChange(p.getLocation(), Material.REDSTONE_WIRE, (byte) 0);
+        Block ground = findGround(p.getLocation());
+
+        if (!ground.isLiquid()) {
+            for (Entity e : p.getNearbyEntities(15D, 15D, 15D))
+                if (e instanceof Player)
+                    sendBlockChange((Player) e, ground.getLocation(), Material.REDSTONE_WIRE, (byte) 0);
+
+            sendBlockChange(p, ground.getLocation(), Material.REDSTONE_WIRE, (byte) 0);
+        }
+    }
+
+    public static Block findGround(Location loc) {
+        Block b = loc.getBlock();
+
+        while (b.getType() == Material.AIR)
+            b = b.getRelative(BlockFace.DOWN);
+
+        b = b.getRelative(BlockFace.UP);
+
+        return b;
     }
 
     public static void playerYell(Player p, Msg msg, double severity) {
         for (Entity e : p.getNearbyEntities(15 + severity, 15 + severity, 15 + severity))
             if (e instanceof Player)
-                Msg.YELL.sendTo((Player) e, Msg.YELL_BROKEN_LEG, p.getName());
+                Msg.YELL.sendTo((Player) e, msg, p.getName());
 
-        Msg.YELL.sendTo(p, Msg.YELL_BROKEN_LEG, p.getName());
+        Msg.YELL.sendTo(p, msg, p.getName());
+    }
+
+    @SuppressWarnings("deprecation")
+    public static void sendBlockChange(Player p, Location l, Material m, byte data) {
+        p.sendBlockChange(l, m, data);
     }
 
     public static ItemStack setItemNameAndLore(ItemStack item, String name, List<String> lore) {

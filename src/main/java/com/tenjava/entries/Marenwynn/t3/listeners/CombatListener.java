@@ -1,7 +1,6 @@
 package com.tenjava.entries.Marenwynn.t3.listeners;
 
 import org.bukkit.Bukkit;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,7 +15,7 @@ public class CombatListener implements Listener {
 
     @EventHandler
     public void onEntityDamage(EntityDamageByEntityEvent damageEvent) {
-        if (damageEvent.getEntityType() != EntityType.PLAYER)
+        if (!(damageEvent.getEntity() instanceof Player))
             return;
 
         Player p = (Player) damageEvent.getEntity();
@@ -33,7 +32,7 @@ public class CombatListener implements Listener {
         // Bleeds don't stack, but they can get worse
         if (!pd.isBleeding() || (pd.isBleeding() && pd.getBleedSeverity() < severity))
             if (Util.getRandom().nextInt(100) <= effectChance)
-                Effects.bleedPlayer(p, severity);
+                Effects.bleedPlayer(p, severity, true);
 
         // Debug
         Bukkit.broadcastMessage("damage: " + damage);

@@ -11,6 +11,7 @@ public class PlayerData implements Serializable {
     private int               bleedSeverity;
 
     public PlayerData() {
+        setBleeding(false);
         setBrokenLegs(false);
         setWalkSpeed(0.2F);
     }

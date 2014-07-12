@@ -21,7 +21,7 @@ public class BleedPlayer extends BukkitRunnable {
     public void run() {
         if (pd.isBleeding()) {
             double hp = p.getHealth();
-            double damage = 1D;
+            double damage = (pd.getBleedSeverity() / 10D) + 1D;
 
             if (hp - damage <= 0) {
                 p.setHealth(0);
