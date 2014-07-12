@@ -29,7 +29,32 @@ Usage
 -----
 
 1. Install plugin
-2. Do things with it
 
-<!-- Hi, Marenwynn! This is the default README for every ten.java submission. -->
-<!-- We encourage you to edit this README with some information about your submission – keep in mind you'll be scored on documentation! -->
+2. There are two craftable items that will be needed to survive 
+   (they can also be used on other players while sneaking):
+   
+  Gauze:
+    Usage: Right-click while holding
+    Description: Cures one of bleeding
+    Recipe:
+      "SW_"
+      "SW_"
+      "SW_"
+        'S' = String; 'W' = Wool; '_' = Nothing
+  Splint:
+    Usage: Right-click while holding
+    Description: Cures one of broken bones
+    Recipe:
+      "_S_"
+      "_T_"
+      "_S_"
+        'S' = String; 'T' = Stick; '_' = Nothing
+
+3. Falling will have a random chance of breaking your legs;
+   the greater the fall, the greater the chance
+
+4. Being struck in combat has a random chance of making you
+   bleed; the greater the damage, the greater the chance.
+   Blocking will prevent this from happening. :)
+   
+5. Breaking your legs and bleeding out sucks, so stay well-stocked!
