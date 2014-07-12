@@ -29,6 +29,9 @@ public class PlayerListener implements Listener {
 
         if (pd.isBleeding())
             Effects.bleedPlayer(p, pd.getBleedSeverity());
+
+        if (pd.hasBrokenArm())
+            Msg.NOTICE_BROKEN_ARM.sendTo(p);
     }
 
     @EventHandler
@@ -53,9 +56,6 @@ public class PlayerListener implements Listener {
             pd.setWalkSpeed(0.2F);
             pd.setBrokenLegs(false);
         }
-
-        if (pd.hasBrokenArm())
-            Msg.NOTICE_BROKEN_ARM.sendTo(p);
 
         Data.savePlayer(playerUUID);
     }
