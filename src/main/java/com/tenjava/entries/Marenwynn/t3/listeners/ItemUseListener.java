@@ -38,7 +38,7 @@ public class ItemUseListener implements Listener {
 
             useItemInHand(p, is);
             useEvent.setCancelled(true);
-            Msg.MEND_LEGS.sendErrorTo(p);
+            Msg.MEND_LEGS.sendTo(p);
         }
     }
 
