@@ -1,6 +1,5 @@
 package com.tenjava.entries.Marenwynn.t3.listeners;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -33,10 +32,6 @@ public class CombatListener implements Listener {
         if (!pd.isBleeding() || (pd.isBleeding() && pd.getBleedSeverity() < severity))
             if (Util.getRandom().nextInt(100) <= effectChance)
                 Effects.bleedPlayer(p, severity);
-
-        // Debug
-        Bukkit.broadcastMessage("damage: " + damage);
-        Bukkit.broadcastMessage("severity: " + severity);
-        Bukkit.broadcastMessage("effect chance: " + effectChance);
     }
+
 }
