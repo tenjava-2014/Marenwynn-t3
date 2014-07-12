@@ -32,7 +32,7 @@ public class ItemUseListener implements Listener {
         if (pd.hasBrokenLegs() && is.isSimilar(Data.customItems.get("splint"))) {
             // May have other slowing afflictions, so only removing speed
             // reduction from broken legs
-            p.setWalkSpeed(p.getWalkSpeed() * 2);
+            p.setWalkSpeed(p.getWalkSpeed() + 0.1F);
             pd.setBrokenLegs(false);
             Data.savePlayer(p.getUniqueId());
 

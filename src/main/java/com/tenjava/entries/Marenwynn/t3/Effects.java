@@ -19,7 +19,7 @@ public class Effects {
 
         if (!pd.hasBrokenLegs()) {
             pd.setBrokenLegs(true);
-            pd.setWalkSpeed(pd.getWalkSpeed() / 2F);
+            pd.setWalkSpeed(pd.getWalkSpeed() - 0.1F);
             p.setWalkSpeed(pd.getWalkSpeed());
 
             // The graver the injury, the louder one would yell

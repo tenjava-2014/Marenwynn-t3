@@ -62,7 +62,7 @@ public class Data {
         // Create splint
         lore.clear();
         lore.add(Util.color("&fBraces broken legs to"));
-        lore.add(Util.color("&frestore mobility"));
+        lore.add(Util.color("&frestore mobility."));
         lore.add(Util.color("&8&oRight-click to use"));
 
         ItemStack splint = Util.setItemNameAndLore(new ItemStack(Material.STICK, 1), "&aSplint", lore);
