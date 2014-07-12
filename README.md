@@ -43,7 +43,7 @@ Usage
         'S' = String; 'W' = Wool; '_' = Nothing
   Splint:
     Usage: Right-click while holding
-    Description: Cures one of broken bones
+    Description: Cures one of broken bones (prioritizes broken legs)
     Recipe:
       "_S_"
       "_T_"
