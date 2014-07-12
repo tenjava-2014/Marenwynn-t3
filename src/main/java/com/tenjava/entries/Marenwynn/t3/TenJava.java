@@ -11,6 +11,7 @@ public class TenJava extends JavaPlugin {
     public void onEnable() {
         Data.init(this);
         Util.init();
+        Effects.init(this);
 
         getServer().getPluginManager().registerEvents(new FallDamageListener(), this);
     }

@@ -7,8 +7,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
+import com.tenjava.entries.Marenwynn.t3.Effects;
 import com.tenjava.entries.Marenwynn.t3.Util;
-import com.tenjava.entries.Marenwynn.t3.data.Msg;
 
 public class FallDamageListener implements Listener {
 
@@ -29,10 +29,8 @@ public class FallDamageListener implements Listener {
         int severity = (int) Math.round(fallDamage * 5D);
         int effectChance = 5 + severity;
 
-        if (Util.getRandom().nextInt(100) <= effectChance) {
-            // The graver the injury, the louder one would yell
-            Util.playerYell(p, Msg.YELL_BROKEN_LEG, severity);
-        }
+        if (Util.getRandom().nextInt(100) <= effectChance)
+            Effects.breakLegs(p, severity);
 
         // Debug
         Bukkit.broadcastMessage("damage: " + fallDamage);

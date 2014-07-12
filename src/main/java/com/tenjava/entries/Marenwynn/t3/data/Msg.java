@@ -8,7 +8,7 @@ public enum Msg {
 
     PREFIX_ERROR("&cError: &f"),
     YELL("&c&o\"%s\" yells %s."),
-    YELL_BROKEN_LEG("Fuck! My leg!!");
+    YELL_BROKEN_LEG("Fuck! My legs!!");
 
     private final String defaultMsg;
 
