@@ -1,3 +1,4 @@
-name: Marenwynn-t3
+name: SBI
+author: Marenwynn
 main: com.tenjava.entries.Marenwynn.t3.TenJava
 version: '${project.version}'

@@ -12,7 +12,7 @@ public class Util {
         rng = new Random();
     }
 
-    public Random getRandom() {
+    public static Random getRandom() {
         return rng;
     }
 
